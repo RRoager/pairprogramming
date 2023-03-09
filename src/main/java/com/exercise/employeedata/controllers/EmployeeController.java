@@ -1,7 +1,6 @@
 package com.exercise.employeedata.controllers;
 
 import com.exercise.employeedata.models.Employee;
-import com.exercise.employeedata.repositories.EmployeeRepository;
 import com.exercise.employeedata.services.EmployeeServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
