@@ -4,12 +4,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Builder
@@ -21,10 +25,13 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotNull
+    @NotEmpty(message = "Name is mandatory. Please provide a name.")
+    @Size(min = 2, message = "Name must be at least 2 characters")
     private String name;
-    @NotNull
+    @NotEmpty(message = "Address is mandatory. Please provide an address.")
     private String address;
-    @NotNull
+    @NotEmpty(message = "Department is mandatory. Please provide a department.")
     private String department;
+    @OneToMany(mappedBy = "employee")
+    private List<Task> tasks;
 }
