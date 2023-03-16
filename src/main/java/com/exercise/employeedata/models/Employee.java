@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name="employees")
-public class Employee {
+public class Employee extends RepresentationModel<Employee> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
