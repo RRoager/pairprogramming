@@ -1,5 +1,6 @@
 package com.exercise.employeedata.models;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +23,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name="employees")
+@JsonFilter("employeeFilter")
 public class Employee extends RepresentationModel<Employee> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
