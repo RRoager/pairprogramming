@@ -1,6 +1,7 @@
 package com.exercise.employeedata.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +24,9 @@ import org.springframework.hateoas.RepresentationModel;
 public class Task extends RepresentationModel<Task> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(Views.Internal.class)
     private Integer id;
+    @JsonView(Views.Internal.class)
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
